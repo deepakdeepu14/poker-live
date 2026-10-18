@@ -1,5 +1,5 @@
 const express=require('express'),http=require('http'),{Server}=require('socket.io'),crypto=require('crypto');
-const app=express(),server=http.createServer(app),io=new Server(server);app.use(express.static('public'));app.get('/health',(_,res)=>res.json({ok:true}));
+const app=express(),server=http.createServer(app),io=new Server(server);app.use(express.static(__dirname));app.get('/health',(_,res)=>res.json({ok:true}));
 const rooms=new Map(),suits=['S','H','D','C'],ranks=['2','3','4','5','6','7','8','9','T','J','Q','K','A'];
 const valid=c=>typeof c==='string'&&c.length===2&&ranks.includes(c[0])&&suits.includes(c[1]);
 const val=c=>ranks.indexOf(c[0])+2;
